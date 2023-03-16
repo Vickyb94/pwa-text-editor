@@ -23,10 +23,35 @@ module.exports = () => {
         template: './index.html',
         title: 'J.A.T.E'
       }),
-      
+      //inject custom service worker
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
+
+      //creating a manifest.json file
+      new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
+        name: 'J.A.T.E',
+        short_name: 'Jate',
+        description: 'Just another text editor',
+        background_color: 'black',
+        theme_color: 'black',
+        start_url: './',
+        publicPath: './',
+        icons: [
+          {
+            src: path.resolve('src/images/logo.png'),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join('assets', 'icons'),
+          },
+        ],
+      }),  
     ],
 
     module: {
+      //CSS Loaders
       rules: [
         
       ],
