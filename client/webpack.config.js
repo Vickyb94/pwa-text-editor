@@ -18,6 +18,11 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      //webpack plugin that generates html files and injects bundles
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'J.A.T.E'
+      }),
       
     ],
 
